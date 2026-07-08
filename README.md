@@ -1,53 +1,52 @@
 # Testeur-de-services
-Script en **<ins>Bash</ins>** qui teste l’état de service de services : <br/>
+Script en **<ins>Bash</ins>** qui teste l’état de service de services :
 
+•  *Au lancement, le script affiche un ASCII pendant 3 secondes avant de faire apparaître la boucle de choix d’action.*
 
-•  *Le script est une boucle qui permet à l’utilisateur de saisir un choix d’action parmi :* <br/>  <br/>  <br/> 
+•  *Le script est une boucle qui permet à l’utilisateur de saisir un choix d’action parmi :*
 
-• saisir des noms de services dont on vérifiera le fonctionnement.<br/> 
-> La première étape consiste à saisir un nombre de services puis, autant de noms de services.<br/> 
-> La seconde étape conciste à ce que le script enregistre les noms des services dans un fichier listeServ placé dans SERV. <br/>
-Exemple : l’utilisateur saisit **2** puis **database** et **web**. Le fichier *listeServ* contient deux lignes : une avec **database** et l’autre avec **web**.
+<br/>  <br/>
 
-• afficher la liste des services
-> À travers un echo de la *Liste des services*.
+• tester un service de ping réseau
+> Vérifie si une machine ou un site répond. L’utilisateur saisit une adresse ou un nom de domaine, le script en extrait le nom d’hôte puis lance un ping dessus.
+> Exemple : l’utilisateur saisit **antok.fr**, le script ping cette adresse et enregistre le résultat.
 
-• vérifier si le service fonctionne. 
-> Cela consiste à vérifier l’existence d’**un** fichier **par** service dans le répertoire SERV. Le service est fonctionnel si le fichier du même nom contient **<ins>Hello</ins>**. <br/>
-> Suite au test, deux fichiers sont mis à jour et créés si nécessaire dans SERV : *ServOK* et *ServNOK*. Chacun contient respectivement les services qui fonctionnent et ceux qui ne fonctionnent pas.
-> Exemple : les deux services surveillés sont database et web, il doit donc y avoir deux fichiers ordinaires SERV/database et SERV/web chacun contenant <ins>Hello</ins>.
+• tester un service de monitoring CPU
+> Vérifie si la charge CPU dépasse un seuil saisi par l’utilisateur (en %).
+> Exemple : l’utilisateur saisit **15**, le script relève la charge CPU actuelle et compare au seuil donné.
 
-• afficher le nombre de services qui fonctionnent
-> Trouvables dans le fichier *SERV_OK*.
+• tester un service de monitoring RAM
+> Vérifie l’utilisation de RAM de **ce programme**, exprimée en Ko.
 
-• afficher le nombre de services qui ne fonctionnent pas
-> Trouvables dans le fichier *SERV_NOK*.
+• tester un service de disponibilité d’un site web
+> Teste si un site renvoie un code HTTP 200. L’utilisateur saisit l’URL du site à tester (ex : **antok.fr**).
 
-• afficher la liste des services qui fonctionnent
-> Trouvables dans le fichier *SERV_OK*.
+• tester un service de vérification DNS
+> Vérifie si un domaine pointe correctement via *nslookup*. L’utilisateur saisit le nom de domaine à vérifier.
 
-• afficher la liste des services qui ne fonctionnent pas
-> Trouvables dans le fichier *SERV_NOK*.
+• tester un service de vitesse réseau
+> Mesure la vitesse de téléchargement et/ou d’envoi. L’utilisateur choisit entre **Download**, **Upload** ou **Les deux**, le résultat est affiché en Mo/s.
 
-• compter le nombre de fichiers dans SERV
-> Trouvables dans le fichier *SERV* avec : *ls -l "SERV" | wc -l*
+• tester un service de vérification de certificat SSL
+> Vérifie si un certificat est valide ou expiré. L’utilisateur saisit le domaine à vérifier (ex : **antok.fr**), le script relève la date d’expiration du certificat.
 
-• afficher à l’écran la première ligne d’un fichier dont le nom est saisi
-> Obtenable avec : *head -n 1 "$pr_lign"* 
+• tester un service de détection de connexions suspectes
+> Analyse les IP connectées à la machine à travers les connexions réseau actives.
 
-• afficher les X premières lignes de ServOK (le X étant saisi)
-> *head -n "$xpremiere_lignsok" "$SERV_OK"*
+• Chaque test met à jour deux fichiers créés si nécessaire dans SERV : *ServOK* et *ServNOK*. Chacun contient respectivement les services qui fonctionnent et ceux qui ne fonctionnent pas, ainsi qu’un fichier *logs* qui garde l’historique de tous les tests effectués.
+> Exemple : un test de ping sur **antok.fr** réussi ajoute la ligne **Ping:antok.fr** dans *ServOK*.
 
-• afficher les X dernières lignes de ServOK (le X étant saisi)
-> *head -n "$xpremiere_lignsnok" "$SERV_NOK"*
-
-• afficher les X premières lignes de ServNOK (le X étant saisi)
-> *tail -n "$xderniere_lignsok" "$SERV_OK"*
-
-• afficher les X dernières lignes de ServNOK (le X étant saisi)
-> *tail -n "$xderniere_lignsnok" "$SERV_NOK"*
-
-• afficher à l’écran le contenu d’un fichier dont le nom est saisi précédé du nom du fichier
-> *read contenu_plus*
+• le service *"nah i’d win"*
+> ¯\\\_(ツ)\_/¯
 
 • quitter le script
+
+</br>
+
+## Contributeurs
+
+| <a href="https://github.com/Antokkk7"><img src="https://github.com/Antokkk7.png" width="70"></a> | <a href="https://github.com/Severinvlm"><img src="https://github.com/Severinvlm.png" width="70"></a> 
+|---|---|
+| **Antokkk7**<br>Dev | **Severinvlm**<br>Dev (v1)
+
+Ceci était initialement un projet Universitaire en <ins>Bash</ins>.
